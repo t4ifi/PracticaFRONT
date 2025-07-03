@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario de Inicio de Sesión</title>
+
+  <!-- Boxicons -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+
+  <!-- Fuente Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1E1B2E 50%, #292929 50%);
+      color: #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .login {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .login__content {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .login__img {
+      flex: 1 1 300px;
+      background: url('assets/img/LogoApp-Photoroom.png') center top no-repeat;
+      background-size: contain;
+      filter: brightness(0.8);
+      display: none;
+      padding-top: 20px;
+    }
+
+    @media(min-width: 768px) {
+      .login__img {
+        display: block;
+      }
+    }
+
+    .login__forms {
+      flex: 1 1 300px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #292929;
+    }
+
+    .login__title {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #a259ff;
+      text-align: center;
+    }
+
+    .login__box {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .login__icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a259ff;
+      font-size: 1.2rem;
+    }
+
+    .login__input {
+      width: 100%;
+      padding: 12px 12px 12px 45px;
+      border: none;
+      border-radius: 5px;
+      background-color: #121212;
+      color: #eee;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .login__input::placeholder {
+      color: #999;
+    }
+
+    .login__input:focus {
+      outline: none;
+      background-color: #222;
+    }
+
+    .login__button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #a259ff;
+      color: #121212;
+      text-align: center;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+
+    .login__button:hover {
+      background-color: #8f44f5;
+    }
+
+    .error-message {
+      margin-top: 15px;
+      text-align: center;
+      color: #ff6666;
+      font-size: 0.95rem;
+    }
+
+    .success-message {
+      margin-top: 15px;
+      text-align: center;
+      color: #4cd964;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    @media(max-width: 480px) {
+      .login__forms {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <div class="login__content">
+      <div class="login__img"></div>
+
+      <div class="login__forms">
+        <form id="loginForm">
+          <h1 class="login__title">Iniciar Sesión</h1>
+
+          <div class="login__box">
+            <i class='bx bx-user login__icon'></i>
+            <input type="text" id="username" placeholder="Nombre de usuario" class="login__input" />
+          </div>
+
+          <div class="login__box">
+            <i class='bx bx-lock-alt login__icon'></i>
+            <input type="password" id="password" placeholder="Contraseña" class="login__input" />
+          </div>
+
+          <button type="submit" class="login__button">Entrar</button>
+          <div id="errorMessage" class="error-message"></div>
+          <div id="successMessage" class="success-message"></div>
+        </form>
+
+        <footer>© 2025 NullDevs. Todos los derechos reservados.</footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const errorMessage = document.getElementById("errorMessage");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      errorMessage.innerText = "";
+      successMessage.innerText = "";
+
+      if (!username || !password) {
+        errorMessage.innerText = "Por favor, completá todos los campos.";
+        return;
+      }
+
+      successMessage.innerText = "Inicio de sesión exitoso.";
+    });
+  </script>
+</body>
+</html>
